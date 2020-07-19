@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   state = {
-    isAuthenticated: true,.getItem("parking_id")),
+    isAuthenticated: true,
   };
 
   componentDidMount() {
@@ -40,6 +40,5 @@ class App extends Component {
     }
 
     return <BrowserRouter>{routes}</BrowserRouter>;
-  }
-}
+  }}
 export default App
