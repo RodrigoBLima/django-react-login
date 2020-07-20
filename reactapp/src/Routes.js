@@ -7,7 +7,7 @@ export default class Routes extends Component {
         return (
             <div>
                 <Switch>
-                     <Route path="/*" component={Onepage} />
+                     <Route path="/onepage/" component={Onepage} />
                 </Switch>                
             </div>
         )

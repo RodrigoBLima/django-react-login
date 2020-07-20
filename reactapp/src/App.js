@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   state = {
+
     isAuthenticated: true,
   };
 
@@ -24,6 +25,19 @@ class App extends Component {
     let routes = (
       <Switch>
         <Layout>
+        <Route
+            path="/login/"
+            render={() => (
+              <Redirect to={`/onepage/`} />
+            )}
+          />
+           <Route
+            exact
+            path="/"
+            render={() => (
+              <Redirect to={`/onepage/`} />
+            )}
+          />
           <Route path="/*" component={Routes} />
         </Layout>
       </Switch>

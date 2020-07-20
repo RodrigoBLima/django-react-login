@@ -7,7 +7,6 @@ import myConfig from "../../configs/config";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,16 +16,19 @@ const Login = () => {
     form_data.append("username", email);
     form_data.append("password", password);
     form_data.append("grant_type", "password");
-    form_data.append("client_id", "YOUR_CLIENT_ID");
-    form_data.append("client_secret","YOUR_CLIENT_SECRET");
-    
+    form_data.append("client_id", "api");
+    form_data.append(
+      "client_secret",
+      "H4s2b6ATJHBnmYcah9vxnpwuKJxQgEjbRo0TlmvDgVVgB02MYugfNGLpGU1w3Pz9CbRwoR9caGOw3zXOCv0GUS13udR8GAgMIYzLKBcBh5ErnFg7r8EW6gPw2jKVQnsm"
+    );
+
     return form_data;
   }
 
   function handleSave(e) {
     e.preventDefault();
 
-    const LOGIN_URL = `${myConfig.API_URL}/o/token/`;
+    const LOGIN_URL = `${myConfig.CRU_URL}/o/token/`;
 
     axios({
       baseURL: LOGIN_URL,
@@ -38,20 +40,20 @@ const Login = () => {
           console.log(res.data);
           localStorage.setItem("user-token", res.data.access_token);
           toast("Login realizado com sucesso.");
+          window.location.href = "/";
         }
       })
       .catch((error) => {
-        // console.log("ERROR", error);
+        console.log("ERROR", error);
         toast("Email ou senha inválidos.");
       });
-    // setTimeout(() => {}, 3500);
   }
 
   return (
     <div className="login_content">
       <section className="form">
         <form onSubmit={handleSave}>
-          <h1>Faça o seu Login</h1>
+          <h1>Login</h1>
 
           <input
             value={email}
@@ -60,6 +62,7 @@ const Login = () => {
             placeholder="Email"
             type="email"
           />
+          <br />
           <input
             value={password}
             name="password"
@@ -67,18 +70,18 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Senha"
           />
+          <br />
           <button className="button" type="submit">
             Entrar
           </button>
-
+          <br />
           <Link to="/signup" className="back-link">
-            <FiLogIn size={16} color="007bff" />
+            <FiLogIn size={16} color="b366ff" />
             Não tenho cadastro
           </Link>
         </form>
         <ToastContainer />
       </section>
-
     </div>
   );
 };

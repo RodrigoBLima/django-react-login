@@ -37,12 +37,13 @@ export default function Register() {
           history.push("/login/");
         }, 5000);
       })
-      .catch((error) => {        
+      .catch((error) => {
+        console.log(error);
         let error_msg = "";
         Object.keys(error.response.data).forEach(function (e) {
           error_msg += e + ": " + error.response.data[e][0] + " - ";
         });
-        toast(error_msg);
+        toast(error);
       });
   }
 
@@ -51,10 +52,6 @@ export default function Register() {
       <div className="content">
         <section className="">
           <h1>Cadastro</h1>
-          <Link to="/" className="back-link">
-            <FiArrowLeft size={16} color="007bff" />
-            Não tenho cadastro
-          </Link>
         </section>
         <form onSubmit={handleRegister}>
           <input
@@ -62,7 +59,7 @@ export default function Register() {
             onChange={(e) => setEst(e.target.value)}
             placeholder="Nome"
           />
-
+          <br />
           <input
             value={username}
             onChange={(e) => setName(e.target.value)}
@@ -85,12 +82,16 @@ export default function Register() {
             placeholder="Confirmar senha"
             type="password"
           />
-
+        <br/>
           <button className="button" type="submit">
             Cadastrar
           </button>
         </form>
       </div>
+      <Link to="/" className="back-link">
+            <FiArrowLeft size={16} color="b366ff" />
+            Já tenho cadastro
+          </Link>
       <ToastContainer />
     </div>
   );
