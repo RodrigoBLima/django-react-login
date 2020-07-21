@@ -16,10 +16,10 @@ const Login = () => {
     form_data.append("username", email);
     form_data.append("password", password);
     form_data.append("grant_type", "password");
-    form_data.append("client_id", "api");
+    form_data.append("client_id", "your_client_id");
     form_data.append(
       "client_secret",
-      "H4s2b6ATJHBnmYcah9vxnpwuKJxQgEjbRo0TlmvDgVVgB02MYugfNGLpGU1w3Pz9CbRwoR9caGOw3zXOCv0GUS13udR8GAgMIYzLKBcBh5ErnFg7r8EW6gPw2jKVQnsm"
+      "your_client_Secret"
     );
 
     return form_data;
